@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ElmiraApplication.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="10"
+            Padding="30"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Enter Référence"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Enter Référence"
+                FontSize="18"
+                HorizontalOptions="FillAndExpand" />
+
+            <Frame BorderColor="LightSlateGray"
+                   Padding="10,0">
+                <Entry
+                x:Name="RefText"
+                Text=""
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Enter Référence..."
+                FontSize="18"
+                HorizontalOptions="FillAndExpand" />
+            </Frame>
+            
+            <Label
+                Text="Enter Produit"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Enter Produit"
+                FontSize="18"
+                HorizontalOptions="FillAndExpand" />
+            <Frame BorderColor="LightSlateGray"
+                   Padding="10,0">
+                <Entry
+                x:Name="ProdText"
+                Text=""
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Enter Produit..."
+                FontSize="18"
+                HorizontalOptions="FillAndExpand" />
+            </Frame>
+            
+            <Label
+                Text="Prix Unitaire"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Enter Prix Unitaire"
+                FontSize="18"
+                HorizontalOptions="FillAndExpand" />
+            <Frame BorderColor="LightSlateGray"
+                   Padding="10,0">
+                <Entry
+                x:Name="PUText"
+                Text=""
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Enter Prix Unitaire..."
+                FontSize="18"
+                HorizontalOptions="FillAndExpand" />
+            </Frame>
+            
+            <Label
+                Text="Montant"
+                SemanticProperties.HeadingLevel="Level1"
+                SemanticProperties.Description="Enter Montant"
+                FontSize="18"
+                HorizontalOptions="FillAndExpand" />
+            <Frame BorderColor="LightSlateGray"
+                   Padding="10,0">
+                <Entry
+                x:Name="MontantText"
+                Text=""
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Enter Montant...."
+                FontSize="18"
+                HorizontalOptions="FillAndExpand" />
+            </Frame>
+            <Button
+                x:Name="GenerateBtn"
+                Text="CLICK ME"
+                SemanticProperties.Hint="Generate the QR code when you click"
+                Clicked="OnGenerateClicked"
+                HorizontalOptions="FillAndExpand" />
+            
+            <Frame BorderColor="LightSlateGray"
+                   BackgroundColor="White"
+                   Padding="10">
+                <Image
+                x:Name="QrCodeImage"
+                HeightRequest="200"
+                WidthRequest="200"/>
+            </Frame>
+            <Button Text="SCAN ME"  Clicked="Button_Clicked">
+                
+            </Button>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
