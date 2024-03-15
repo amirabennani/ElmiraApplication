@@ -17,32 +17,32 @@ public partial class MainPage : ContentPage
         ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
     }
 
-    private async void OnGenerateClicked(object sender, EventArgs e)
-    {
-        // Obtenir les données des champs d'entrée
-        string reference = RefText.Text;
-        string produit = ProdText.Text;
-        string prixUnitaire = PUText.Text;
-        string montant = MontantText.Text;
+    /* private async void OnGenerateClicked(object sender, EventArgs e)
+     {
+         // Obtenir les données des champs d'entrée
+         string reference = RefText.Text;
+         string produit = ProdText.Text;
+         string prixUnitaire = PUText.Text;
+         string montant = MontantText.Text;
 
-        // Concaténer les données dans une chaîne
-        string qrData = $"Référence: {reference}\nProduit: {produit}\nPrix Unitaire: {prixUnitaire}\nMontant: {montant}";
+         // Concaténer les données dans une chaîne
+         string qrData = $"Référence: {reference}\nProduit: {produit}\nPrix Unitaire: {prixUnitaire}\nMontant: {montant}";
 
-        // Générer le code QR
-        QRCodeGenerator qrGenerator = new QRCodeGenerator();
-        QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrData, QRCodeGenerator.ECCLevel.L);
-        PngByteQRCode qRCode = new PngByteQRCode(qrCodeData);
-        byte[] qrCodeBytes = qRCode.GetGraphic(20);
+         // Générer le code QR
+         QRCodeGenerator qrGenerator = new QRCodeGenerator();
+         QRCodeData qrCodeData = qrGenerator.CreateQrCode(qrData, QRCodeGenerator.ECCLevel.L);
+         PngByteQRCode qRCode = new PngByteQRCode(qrCodeData);
+         byte[] qrCodeBytes = qRCode.GetGraphic(20);
 
-        // Afficher le code QR dans l'image
-        QrCodeImage.Source = ImageSource.FromStream(() => new MemoryStream(qrCodeBytes));
+         // Afficher le code QR dans l'image
+         QrCodeImage.Source = ImageSource.FromStream(() => new MemoryStream(qrCodeBytes));
 
-        // Enregistrer le QR code dans un fichier Excel
-        await SaveQRCodeToExcelAsync(qrCodeBytes, reference, produit, prixUnitaire, montant);
-    }
+         // Enregistrer le QR code dans un fichier Excel
+         await SaveQRCodeToExcelAsync(qrCodeBytes, reference, produit, prixUnitaire, montant);
+     }
+ */
 
-
-    private async Task SaveQRCodeToExcelAsync(byte[] qrCodeBytes, string reference, string produit, string prixUnitaire, string montant)
+    /*private async Task SaveQRCodeToExcelAsync(byte[] qrCodeBytes, string reference, string produit, string prixUnitaire, string montant)
     {
         // Emplacement où vous souhaitez enregistrer le fichier Excel
         string excelFilePath = @"C:\Users\Milestone\Desktop\qr\qr.xlsx";
@@ -87,7 +87,7 @@ public partial class MainPage : ContentPage
             ExcelPicture qrCodePicture = worksheet.Drawings.AddPicture("QRCode", new MemoryStream(qrCodeBytes));
             qrCodePicture.SetPosition(2, 0, 4, 0);
             //var qrCodePosition = worksheet.Cells["E3"]; // Cellule où vous souhaitez insérer le QR code
-            /* qrCodePicture.SetPosition(qrCodePosition.Start.Row, qrCodePosition.Start.Column, 0, 0);*/ // Positionner l'image dans la cellule
+            *//* qrCodePicture.SetPosition(qrCodePosition.Start.Row, qrCodePosition.Start.Column, 0, 0);*//* // Positionner l'image dans la cellule
             qrCodePicture.SetSize(100, 100); // Ajustez la taille de l'image selon vos besoins
            
            
@@ -95,18 +95,26 @@ public partial class MainPage : ContentPage
             await package.SaveAsync();
         }
     }
-
+*/
 
     private async void Button_Clicked(object sender, EventArgs e)
     {
+        // Réinitialiser le contenu du Label lorsque le bouton est cliqué
+        qrCodeLabel.Text = "";
         string qrCodeText = await QRCodeScanner.ScanQRCodeAsync();
+
         if (!string.IsNullOrEmpty(qrCodeText))
         {
-            await DisplayAlert("QR Code", qrCodeText, "OK");
+            qrCodeLabel.Text = qrCodeText;
+            //await DisplayAlert("QR Code", qrCodeText, "OK");
         }
         else
         {
-            await DisplayAlert("QR Code", "Aucun code QR n'a été détecté.", "OK");
+            qrCodeLabel.Text = "Aucun code QR n'a été détecté.";
+            //await DisplayAlert("QR Code", "Aucun code QR n'a été détecté.", "OK");
         }
+        
     }
+
+
 }

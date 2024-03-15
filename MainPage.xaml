@@ -4,98 +4,30 @@
              x:Class="ElmiraApplication.MainPage">
 
     <ScrollView>
+
         <VerticalStackLayout
             Spacing="10"
             Padding="30"
             HorizontalOptions="FillAndExpand"
-            VerticalOptions="Center">
+            VerticalOptions="Start">
 
-            <Label
-                Text="Enter Référence"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Enter Référence"
-                FontSize="18"
-                HorizontalOptions="FillAndExpand" />
+            <Image
+                    x:Name="logo"
+                    Source="Images/logo2.png"
+                    HeightRequest="200"
+                    WidthRequest="200"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"/>
 
-            <Frame BorderColor="LightSlateGray"
-                   Padding="10,0">
-                <Entry
-                x:Name="RefText"
-                Text=""
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Enter Référence..."
-                FontSize="18"
-                HorizontalOptions="FillAndExpand" />
-            </Frame>
-            
-            <Label
-                Text="Enter Produit"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Enter Produit"
-                FontSize="18"
-                HorizontalOptions="FillAndExpand" />
-            <Frame BorderColor="LightSlateGray"
-                   Padding="10,0">
-                <Entry
-                x:Name="ProdText"
-                Text=""
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Enter Produit..."
-                FontSize="18"
-                HorizontalOptions="FillAndExpand" />
-            </Frame>
-            
-            <Label
-                Text="Prix Unitaire"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Enter Prix Unitaire"
-                FontSize="18"
-                HorizontalOptions="FillAndExpand" />
-            <Frame BorderColor="LightSlateGray"
-                   Padding="10,0">
-                <Entry
-                x:Name="PUText"
-                Text=""
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Enter Prix Unitaire..."
-                FontSize="18"
-                HorizontalOptions="FillAndExpand" />
-            </Frame>
-            
-            <Label
-                Text="Montant"
-                SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Enter Montant"
-                FontSize="18"
-                HorizontalOptions="FillAndExpand" />
-            <Frame BorderColor="LightSlateGray"
-                   Padding="10,0">
-                <Entry
-                x:Name="MontantText"
-                Text=""
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Enter Montant...."
-                FontSize="18"
-                HorizontalOptions="FillAndExpand" />
-            </Frame>
-            <Button
-                x:Name="GenerateBtn"
-                Text="CLICK ME"
-                SemanticProperties.Hint="Generate the QR code when you click"
-                Clicked="OnGenerateClicked"
-                HorizontalOptions="FillAndExpand" />
-            
-            <Frame BorderColor="LightSlateGray"
-                   BackgroundColor="White"
-                   Padding="10">
-                <Image
-                x:Name="QrCodeImage"
-                HeightRequest="200"
-                WidthRequest="200"/>
-            </Frame>
-            <Button Text="SCAN ME"  Clicked="Button_Clicked">
-                
+            <Button Text="SCAN QR Code" Background="{StaticResource Primary}"   HorizontalOptions="Center"
+                    VerticalOptions="End" Clicked="Button_Clicked">
+
             </Button>
+            <Label x:Name="qrCodeLabel"
+                   Text=""
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Start"/>
+
         </VerticalStackLayout>
     </ScrollView>
 
